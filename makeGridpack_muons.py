@@ -181,7 +181,7 @@ def condor_submit(tag):
 
 if __name__ == "__main__":
     if (len(sys.argv) < 3):
-         print 'Error! Need at least 2 arguments. Usage: ./makeGridpack.py m1 delta [1jet] (m1 in GeV, delta a fraction in [0,1])'
+         print 'Error! Need at least 2 arguments. Usage: ./submit.py m1 delta [1jet] (m1 in GeV, delta a fraction in [0,1])'
          sys.exit()
 
     oneJet = False
@@ -190,9 +190,9 @@ if __name__ == "__main__":
 
     replace_gridpack_generation()
 
-    template = 'iDMe_Mchi-XMASS_dMchi-XHS_mZDinput-MED_ctau-DLENGTH_1or2jets_icckw1_drjj0_xptj80_xqcut20'
+    template = 'iDMmu_Mchi-XMASS_dMchi-XHS_mZDinput-MED_ctau-DLENGTH_1or2jets_icckw1_drjj0_xptj30_xqcut20'
     if oneJet:
-        template = 'iDMe_Mchi-XMASS_dMchi-XHS_mZDinput-MED_ctau-DLENGTH_1jet_icckw1_drjj0_xptj80_xqcut20'
+        template = 'iDMmu_Mchi-XMASS_dMchi-XHS_mZDinput-MED_ctau-DLENGTH_1jet_icckw1_drjj0_xptj30_xqcut20'
 
     # Parsing arguments
     m1 = float(sys.argv[1])
@@ -212,9 +212,9 @@ if __name__ == "__main__":
     tag = format_template(template, tagParams)
 
     # create the madgraph cards with specified masses 
-    tempDir = 'iDMe_generic'
+    tempDir = 'iDMmu_generic'
     if oneJet:
-        tempDir = 'iDMe_generic_1jet'
+        tempDir = 'iDMmu_generic_1jet'
     create_parametrized_cards(tempDir, tag, rawParams)
     os.system('ls -alrth ../cards')
     run_gridpack_generation(tag)
