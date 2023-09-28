@@ -32,9 +32,9 @@ if not os.path.isdir(logDir):
 condor_cmd = 'condor_submit condorTemplate.jdl'
 condor_cmd += f' -append \"{arg_cmd}\"'
 condor_cmd += ' -append \"transfer_input_files = submit.tar.gz\"'
-condor_cmd += ' -append \"output = {logDir}/\$(Cluster)_\$(Process).out\"'
-condor_cmd += ' -append \"error = {logDir}/\$(Cluster)_\$(Process).err\"'
-condor_cmd += ' -append \"log = {logDir}/\$(Cluster)_\$(Process).log\"'
+condor_cmd += f' -append \"output = {logDir}/\$(Cluster)_\$(Process).out\"'
+condor_cmd += f' -append \"error = {logDir}/\$(Cluster)_\$(Process).err\"'
+condor_cmd += f' -append \"log = {logDir}/\$(Cluster)_\$(Process).log\"'
 condor_cmd += ' -append \"Queue 1\"'
 
 print(condor_cmd)
