@@ -12,7 +12,7 @@ cd gridpacks
 
 tar xf ../submit.tar.gz
 
-cd iDMeGridpacker
+cd bin/MadGraph5_aMCatNLO/iDMeGridpacker/
 
 python makeGridpack_electrons.py --m1 $m1 --delta $delta --onejet $onejet --mA_over_m1 $mA_over_m1
 
